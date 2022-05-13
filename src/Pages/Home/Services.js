@@ -11,7 +11,7 @@ const Services = () => {
     const services = [
         {
             _id: 1,
-            name: 'Flouride Treatment',
+            name: 'Fluoride Treatment',
             description: 'Lorem Ipsum is simply dummy printing and typesetting indust Ipsum has been the',
             img: fluoride
 
