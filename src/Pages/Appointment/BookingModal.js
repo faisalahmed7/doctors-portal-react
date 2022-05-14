@@ -5,11 +5,12 @@ import auth from '../../firebase.init';
 import { format } from 'date-fns';
 import { toast } from 'react-toastify';
 
-const BookingModal = ({ treatment, setTreatment, date }) => {
+const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
 
     const { _id, name, slots } = treatment;
-    const [user, loading, error] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const formattedDate = format(date, 'PP');
+
     const handleSubmit = e => {
         e.preventDefault()
         const slot = e.target.slot.value;
@@ -43,6 +44,7 @@ const BookingModal = ({ treatment, setTreatment, date }) => {
                 else {
                     toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
                 }
+                refetch();
                 setTreatment(null)
             })
     }
